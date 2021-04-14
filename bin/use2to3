@@ -71,6 +71,7 @@ try:
     files = check_output(['git', 'ls-files'])
     filenames = files.decode('utf-8').split('\n')
     filenames.pop()  # the last element is an empty string, delete it
+    filenames = [filename for filename in filenames if not filename.startswith('py3k-sympy')]
 
     for filename in skip_files:
         filenames.remove(filename)
